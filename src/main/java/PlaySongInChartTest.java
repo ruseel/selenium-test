@@ -13,7 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class PlayTop1Song {
+public class PlaySongInChartTest {
 	FirefoxDriver wd;
 
 	@Before
@@ -23,20 +23,20 @@ public class PlayTop1Song {
 	}
 
 	@Test
-	public void playTop1Song() {
+	public void TOP1곡을_플레이한다_소리가나는지_10초동안_기다려서_확인한다() {
 		wd.get("http://mnet.interest.me/");
 		wd.findElement(By.id("top_userid")).click();
 		wd.findElement(By.id("top_userid")).clear();
 		wd.findElement(By.id("top_userid")).sendKeys("ruseel");
 		wd.findElement(By.id("top_pass")).click();
 		wd.findElement(By.id("top_pass")).clear();
-		wd.findElement(By.id("top_pass")).sendKeys("xxxx");
+		wd.findElement(By.id("top_pass")).sendKeys("xxx");
 		wd.findElement(By.id("top_login")).click();
 		wd.findElement(By.linkText("챠트")).click();
-		wd.findElement(By.linkText("내가 많이 변했어(With 최자 of 다이나믹듀오)")).click();
+		wd.findElement(By.xpath("//div[2]/div[4]/div[1]/div[3]/div[2]/table/tbody/tr[2]/td[4]/div/div[2]/div[1]/a[2]")).click();
 		
 		RMSMeter m = new RMSMeter(AudioSystem.getMixerInfo()[5], getAudioFormat());
-		Assert.assertTrue(m.measureWhile(10000, (float) 0.7));
+		Assert.assertTrue("소리가 나는가?", m.measureWhile(10000, (float) 0.7));
 	}
 
 	private AudioFormat getAudioFormat() {
