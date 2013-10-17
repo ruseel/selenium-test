@@ -118,6 +118,7 @@ public class RMSMeter {
 		for (Mixer.Info info : AudioSystem.getMixerInfo()) {
 			try {
 				System.out.println(i + ": " + new String(info.getName().getBytes("ISO-8859-1"), "EUC-KR"));
+				i++;
 			} catch (UnsupportedEncodingException e) {
 			}
 		}
