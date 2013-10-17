@@ -1,5 +1,6 @@
 package me.interest.sounddetect;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,5 +111,15 @@ public class RMSMeter {
 		this.stop();
 
 		return this.captureThread.getRMSSmoothed() > threshold;
+	}
+
+	public static void printMixerInfos() {
+		int i = 0;
+		for (Mixer.Info info : AudioSystem.getMixerInfo()) {
+			try {
+				System.out.println(i + ": " + new String(info.getName().getBytes("ISO-8859-1"), "EUC-KR"));
+			} catch (UnsupportedEncodingException e) {
+			}
+		}
 	}
 }
