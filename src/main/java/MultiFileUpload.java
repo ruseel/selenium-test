@@ -89,31 +89,11 @@ public class MultiFileUpload {
 		try {
 			Thread.sleep(sec * 1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 
 	public static void main(String[] args) {
 		new MultiFileUpload().run();
-	}
-
-	private void moveAndClick(By by) {
-		WebElement el = driver.findElement(by);
-		actions.moveToElement(el);
-		actions.click();
-		actions.perform();
-	}
-
-	private void assertElement(By partialLinkText) {
-		WebElement el = driver.findElement(partialLinkText);
-		if (el == null) {
-			throw new RuntimeException("not found");
-		}
-	}
-
-	private void assertTextInElement(String css_class, String v) {
-		new WebDriverWait(driver, 10).until(ExpectedConditions.textToBePresentInElement(By.className(css_class), v));
 	}
 
 }

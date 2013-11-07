@@ -1,5 +1,3 @@
-import me.interest.sounddetect.RMSMeter;
-
 import org.junit.runner.JUnitCore;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
@@ -10,18 +8,20 @@ public class RunForever {
 		@Override
 		public void testFailure(Failure failure) throws Exception {
 			System.out.println(failure.getTestHeader() + ", " + failure.getException() + ", " + failure.getMessage());
+			// SimpleSendMail.mail("ruseel@gmail.com", "xxx", "x@cj.net",
+			// "y@cj.net", subject, body, null);
 		}
 	}
 
 	public static void main(String[] argv) {
-		RMSMeter.printMixerInfos();
+		// RMSMeter.printMixerInfos();
 
 		while (true) {
 			JUnitCore core = new JUnitCore();
 			core.addListener(new SendEmailListener());
 			core.run(PlaySongInChartTest.class);
 
-			sleepInMinute(1);
+			sleepInMinute(0);
 		}
 	}
 

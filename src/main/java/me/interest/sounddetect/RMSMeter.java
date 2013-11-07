@@ -110,7 +110,9 @@ public class RMSMeter {
 		}
 		this.stop();
 
-		return this.captureThread.getRMSSmoothed() > threshold;
+		double v = this.captureThread.getRMSSmoothed();
+		System.out.println("-- " + v);
+		return v > threshold;
 	}
 
 	public static void printMixerInfos() {
